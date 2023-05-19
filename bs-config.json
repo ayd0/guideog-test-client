@@ -1,0 +1,9 @@
+{
+  "server": {
+    "baseDir": "./",
+    "index": "index.html",
+    "routes": {
+      "/users": "http://localhost:3443"
+    }
+  }
+}
