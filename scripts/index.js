@@ -1,14 +1,7 @@
 const usernameField = document.querySelector("#username-field");
 const passwordField = document.querySelector("#password-field");
 const loginBtn = document.querySelector("#login-btn");
-
-loginBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const jwtToken = await login(usernameField.value, passwordField.value);
-    if (jwtToken) {
-        
-    }
-});
+const logoutBtn = document.querySelector("#logout-btn");
 
 const login = (username, password) => {
     const headers = new Headers();
@@ -32,3 +25,16 @@ const login = (username, password) => {
         })
         .catch((err) => console.error(err));
 };
+
+loginBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const jwtToken = await login(usernameField.value, passwordField.value);
+    if (jwtToken) {
+        localStorage.setItem("jwt", jwtToken);
+    }
+});
+
+logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem("jwt");
+})
